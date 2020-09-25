@@ -11,22 +11,27 @@ namespace ConsoleApp03
     {
         static void Main(string[] args)
         {
+                 //演習3-1-1
+           var numbers = new List<int> { 12, 87, 94, 14, 53, 20, 40, 35, 76, 91, 31, 17, 48 };
 
-            var list = new List<string>
-            {
-                "Tokyo","New Delhi","Bangkok","London","Paris","Berlin","Camberra","Hong Kong", 
-            };
+           var exists = numbers.Exists(s => s % 8 == 0 || s % 9 == 0);
+            if (exists)
+                Console.WriteLine("存在してます");
+            else
+                Console.WriteLine("存在してません");
 
-           // list.ForEach (s => Console.WriteLine(s)) ;
+            //演習3-1-2
+            numbers.ForEach(n => Console.WriteLine(n/2.0));
 
-            list.FindAll(s => s.ToUpper(s)).ForEach(s => Console.WriteLine(s));
+            //演習3-1-3
+           IEnumerable<int> query = numbers.Where(n => n<= 50);
+            foreach (var item in query) {
+                Console.WriteLine(item);
+            }
 
 
 
-            /*
-           foreach (var s in name) 
-            Console.WriteLine(s);
-            */
         }
     }
 }
+                  
