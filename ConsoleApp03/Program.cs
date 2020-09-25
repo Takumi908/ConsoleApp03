@@ -12,24 +12,14 @@ namespace ConsoleApp03
         static void Main(string[] args)
         {
 
-            var names = new List<string>
+            var list = new List<string>
             {
                 "Tokyo","New Delhi","Bangkok","London","Paris","Berlin","Camberra","Hong Kong", 
             };
 
-            //遅延
-            IEnumerable<string> query = names.Where(s => s.Length <= 5).ToArray();
-            foreach (var item in query) {
-                Console.WriteLine(item);
-            }
-            Console.WriteLine("--------------");
+           // list.ForEach (s => Console.WriteLine(s)) ;
 
-            names[0] = "Osaka";
-            foreach(var item in query) {
-                Console.WriteLine(item);
-            }
-
-            names.ConvertAll(s => s.ToUpper()).ForEach(s => Console.WriteLine(s));
+            list.FindAll(s => s.ToUpper(s)).ForEach(s => Console.WriteLine(s));
 
 
 
