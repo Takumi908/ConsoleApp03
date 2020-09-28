@@ -11,26 +11,42 @@ namespace ConsoleApp03
     {
         static void Main(string[] args)
         {
-                 //演習3-1-1
-           var numbers = new List<int> { 12, 87, 94, 14, 53, 20, 40, 35, 76, 91, 31, 17, 48 };
 
-           var exists = numbers.Exists(s => s % 8 == 0 || s % 9 == 0);
-            if (exists)
-                Console.WriteLine("存在してます");
-            else
-                Console.WriteLine("存在してません");
+            Console.WriteLine("\n----- 3.2.2 -----");     //\n 改行
+            Console.WriteLine("都市名を入力:");
+            var names = new List<string> {
+                "Tokyo","New Delhi","Bangkok","London","Paris","Berlin","Canberra","Hong Kong", };
+                
+                do {
+                    var line = Console.ReadLine();
+                    if (string.IsNullOrEmpty(line)) { 
+                        break;//値が空で終了
+                    }
+                    var index = names.FindIndex(s => s == line);
+                    Console.WriteLine(index);
+                } while (true);  //無限ループ
 
-            //演習3-1-2
-            numbers.ForEach(n => Console.WriteLine(n/2.0));
+            //3-2-2
+            Console.WriteLine("\n----- 3.2.2 -----");
+            var count = names.Count(s => s.Contains('o'));
+            Console.WriteLine(count);
 
-            //演習3-1-3
-           IEnumerable<int> query = numbers.Where(n => n<= 50);
-            foreach (var item in query) {
-                Console.WriteLine(item);
+            //3-2-3
+            Console.WriteLine("\n----- 3.2.3 -----");
+            var selected = names.Where(s => s.Contains('o')).ToArray();    //配列に格納
+            foreach (var name in selected) {
+                Console.WriteLine(name);
+
+             //3-2-4
+             Console.WriteLine("\n----- 3.2.3 -----");
+                var nameCounts = names.Where(s => s.StartsWith("B")).Select(s => s.Length);
+                foreach (var length in nameCounts) {
+                    Console.WriteLine(length);
+
+                }
             }
 
-
-
+            }
         }
     }
 }
